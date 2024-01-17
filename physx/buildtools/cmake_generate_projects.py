@@ -177,6 +177,12 @@ class CMakePreset:
             outString = outString + ' -DTARGET_BUILD_PLATFORM=windows'
             outString = outString + ' -DPX_OUTPUT_ARCH=x86'
             return outString
+        elif self.targetPlatform == 'win32':
+            if self.generator != 'ninja':
+                outString = outString + ' -AWin32'
+            outString = outString + ' -DTARGET_BUILD_PLATFORM=windows'
+            outString = outString + ' -DPX_OUTPUT_ARCH=x86'
+            return outString
         elif self.targetPlatform == 'switch64':
             outString = outString + ' -DTARGET_BUILD_PLATFORM=switch'
             outString = outString + ' -DCMAKE_TOOLCHAIN_FILE=' + \
